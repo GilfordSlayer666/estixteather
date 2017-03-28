@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Renglón de Reporte.</title>
+    <style>
+      [is="compro-reporte-renglon"] .total {text-align: right}
+    </style>
+  </head>
+  <body>
+    <template>
+      <td class="producto"></td><td class="total"></td>
+    </template>
+    <script>
+      "use strict";
+      (function () {
+        var template = elementPrevio();
+        var prototipo = Object.create(HTMLTableRowElement.prototype);
+        prototipo.createdCallback = function () {
+          cargaTemplate(this, template);
+          Object.defineProperties(this, {
+            producto: {
+              enumerable: true,
+              value: this.querySelector(".producto")
+            },
+            total: {
+              enumerable: true,
+              value: this.querySelector(".total")
+            }
+          });
+        };
+        registraElement("compro-reporte-renglon",
+            {extends: "tr", prototype: prototipo});
+      })();
+    </script>
+  </body>
+</html>

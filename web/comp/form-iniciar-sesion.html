@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Categorías</title>
+    <meta charset="UTF-8">
+    <link rel="import" href="rmpt/rmpt-campo.html">
+    <link rel="import" href="rmpt/rmpt-indica-campos-obligatorios.html">
+    <link rel="import" href="form-registro.html">
+  </head>
+  <body>
+    <template>
+      <div class="columnas">
+        <div class="imagen crece">
+          <img alt="Compro" src="img/shopping-basket-full256.png"/>
+        </div>
+        <div>
+          <p is="rmpt-campo" data-label="Usuario" data-accesskey="I">
+            <input type="text" name="id" autofocus="autofocus"/>            
+          </p>
+          <p is="rmpt-campo" data-label="Contraseña" data-accesskey="O">
+            <input type="password" name="contrasena"/>
+          </p>
+<!--          <p is="rmpt-indica-campos-obligatorios"></p>-->
+          <p class="botones">
+              <input type="button" value="Cancelar" class="cancelar"  accesskey="C"
+                   onclick="location.hash = '#compro-inicio'">
+            <input type="submit" value="Iniciar Sesión" accesskey="S"
+                   class="principal">
+            <input type="button" value="Registrarse" class="buscar" accesskey="R"
+                   onclick="location.hash = '#form-registro'">
+          </p>
+        </div>
+      </div>
+    </template>
+    <script>
+      "use strict";
+      (function () {
+        var prototipo = Object.create(HTMLFormElement.prototype);
+        var template = elementPrevio();
+        prototipo.createdCallback = function () {
+          this.action = "javascript:;";
+          cargaTemplate(this, template);
+          var medWeb = new MedWeb(this, "ctrlIniciarSesion");
+          medWeb.formActualizada = function (modeloForm) {
+            if (modeloForm.siguienteForm) {
+              location.reload();
+            }
+          };
+          medWeb.inicia();
+        };
+        registraElement("form-iniciar-sesion",
+            {extends: "form", prototype: prototipo});
+      })();
+    </script>
+  </body>
+</html>

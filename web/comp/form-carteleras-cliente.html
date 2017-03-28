@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+Copyright 2017 JorgeVargas.
+-->
+<html>
+    <head>
+        <title>Carteleras</title>
+         <meta charset="UTF-8">
+        <link rel="import" href="rmpt/rmpt-filtro.html">
+        <link rel="import" href="rmpt/rmpt-lista.html">
+        <link rel="import" href="rmpt/rmpt-campo-texto.html">
+    </head>
+    <body>
+    <template>
+      <input type="hidden" name="nuevo">
+      <input type="hidden" name="muestraDetalle">
+      <input type="hidden" name="detalleId">
+      
+      <div id="maestro" data-interruptor-invertido="muestraDetalle">
+        <main role="main">
+          <div class="herramientas">
+            <rmpt-filtro></rmpt-filtro>
+          </div>
+          <rmpt-lista id="lista"></rmpt-lista>
+        </main>
+      </div>
+      
+      
+      <div id="detalle" data-interruptor="muestraDetalle">
+          
+        <div class="herramientas">
+          <input type="button" value="Cancelar" accesskey="C"
+                 data-accion="action_cancelar">
+        </div>
+          
+        <div class="columnas">
+            
+          <div class="imagen crece">
+            <img id="img" alt="Cartelera">
+          </div>
+            
+          <div>
+            <p id="teatro" is="rmpt-campo-texto" data-label="Teatro"></p>
+            <p id="obra" is="rmpt-campo-texto" data-label="Obra"></p>
+            <p id="fechaI" is="rmpt-campo-texto" data-label="Fecha de Inicio"></p>
+            <p id="fechaT" is="rmpt-campo-texto" data-label="Fecha de Termino"></p>
+            <p id="horarioI" is="rmpt-campo-texto" data-label="Hora de Inico"></p>
+            <p id="horarioT" is="rmpt-campo-texto" data-label="Hora de Termino"></p>
+            <p id="costo" is="rmpt-campo-texto" data-label="Costo (MN)"></p>
+          </div>
+            
+        </div>
+          
+      </div>
+      
+      
+    </template>
+    <script>
+      "use strict";
+      (function () {
+        var prototipo = Object.create(HTMLFormElement.prototype);
+        var template = elementPrevio();
+        prototipo.createdCallback = function () {
+          this.action = "javascript:;";
+          cargaTemplate(this, template);
+          new MedWeb(this, "ctrlCartelerasCliente").inicia();
+        };
+        registraElement("form-carteleras-cliente",
+            {extends: "form", prototype: prototipo});
+      })();
+    </script>
+    </body>
+</html>

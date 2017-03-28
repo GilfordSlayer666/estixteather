@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Renglón de Lista.</title>
+            <style>
+/*                rmpt-renglon {
+                margin: 0.2em 0;
+                display: -webkit-flex;
+                display: flex;
+                
+              }*/
+              rmpt-renglon .imagen {margin-right: 8px}
+              rmpt-renglon .imagen img {width: 250px}
+              rmpt-renglon .textos {
+                -webkit-flex: 1;
+                flex: 1;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+              }
+              rmpt-renglon .textos .texto1 {
+/*                color: #FFA726;*/
+                font-weight: bold;
+                font-size: 1.3em
+              }
+            </style>
+    </head>
+    <body>
+        <template>         
+            <br/>
+            <div class="columnas">
+                <div class="div-inicio">
+                    <a class="imagen">
+                        <img alt="Imagen">
+                    </a>
+                    <span class="textos">
+                        <a class="texto1" href="javascript:;"></a>
+                        <span class="texto2"></span>
+                    </span>
+                </div>
+            </div>
+        </template>
+        <script>
+            "use strict";
+            (function () {
+                var template = elementPrevio();
+                var prototipo = Object.create(HTMLElement.prototype);
+                prototipo.createdCallback = function () {
+                    cargaTemplate(this, template);
+                    Object.defineProperties(this, {
+                        a: {
+                            enumerable: true,
+                            value: this.querySelector(".imagen")
+                        },
+                        img: {
+                            enumerable: true,
+                            value: this.querySelector("img")
+                        },
+                        texto1: {
+                            enumerable: true,
+                            value: this.querySelector(".texto1")
+                        },
+                        texto2: {
+                            enumerable: true,
+                            value: this.querySelector(".texto2")
+                        }
+                    });
+                };
+                registraElement("rmpt-renglon", {prototype: prototipo});
+            })();
+        </script>
+    </body>
+</html>

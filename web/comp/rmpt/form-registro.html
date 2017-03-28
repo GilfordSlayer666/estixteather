@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Categorías</title>
+    <meta charset="UTF-8">
+    <link rel="import" href="rmpt/rmpt-registro.html">
+    <link rel="import" href="rmpt/rmpt-herramientas-detalle.html">
+    <link rel="import" href="rmpt/rmpt-campo.html">
+    <link rel="import" href="rmpt/rmpt-indica-campos-obligatorios.html">
+    <link rel="import" href="rmpt/rmpt-selecciona-rol.html">
+  </head>
+  <body>
+    <template>
+      <rmpt-registro id="maestro"></rmpt-registro>
+      <div id="detalle" data-interruptor="muestraDetalle">
+          <rmpt-herramientas-detalle data-confirmacion="Confirma eliminar este usuario.">
+        </rmpt-herramientas-detalle>
+        <input type="hidden" name="debeConfirmar" value="true">
+            <p id="id" is="rmpt-campo" data-label="Identificador" data-accesskey="I"
+           data-ayuda="5 a 16 letras o dígitos">
+          <input type="text" maxlength="16">
+        </p>
+        <p id="contrasena" is="rmpt-campo"
+           data-label="Contraseña" data-accesskey="O"
+           data-ayuda="5 a 25 caracteres">
+          <input type="password" maxlength="25">
+        </p>
+        <p id="confirma" is="rmpt-campo"
+           data-label="Confirma la Contraseña" data-accesskey="F"
+           data-ayuda="Debe coincidir con la contraseña">
+          <input type="password" maxlength="25">
+        </p>
+        <p id="nombre" is="rmpt-campo" data-label="Nombre" data-accesskey="N">
+          <input type="text">
+        </p>
+        <fieldset id="roles" is="rmpt-selecciona-rol"
+                  data-legend="Roles" data-accesskey="R">
+        </fieldset>
+        <p>Nota: Si no selecciona el rol, no podrá visualizar los Eventos.</p>
+        <rmpt-indica-campos-obligatorios></rmpt-indica-campos-obligatorios>
+      </div>
+    </template>
+    <script>
+      "use strict";
+      (function () {
+        var prototipo = Object.create(HTMLFormElement.prototype);
+        var template = elementPrevio();
+        prototipo.createdCallback = function () {
+          this.action = "javascript:;";
+          cargaTemplate(this, template);
+          new MedWeb(this, "ctrlRegistro").inicia();
+        };
+        registraElement("form-registro",
+            {extends: "form", prototype: prototipo});
+      })();
+    </script>
+  </body>
+</html>

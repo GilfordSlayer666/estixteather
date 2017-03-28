@@ -1,0 +1,27 @@
+{
+  "elements": {
+    "rmpt-filtro": {},
+    "rmpt-herramientas-maestras": {},
+    "compro-lateral": {},
+    "rmpt-panel-maestro": {},
+    "rmpt-indica-campos-obligatorios": {},
+    "compro-footer": {},
+    "rmpt-herramientas-detalle": {
+      "attributes": {
+        "data-aviso": {},
+        "data-confirmacion": {}
+      }
+    },
+    "label": {},
+    "content": {},
+    "compro-navegacion": {},
+    "span": {}
+  },
+  "attributes": {
+    "is": {
+      "context": "input"
+    },
+    "id": {},
+    "class": {}
+  }
+}

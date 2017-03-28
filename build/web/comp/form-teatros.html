@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teatros</title>
+    <meta charset="UTF-8">
+    <link rel="import" href="rmpt/rmpt-panel-maestro.html">
+    <link rel="import" href="rmpt/rmpt-herramientas-detalle.html">
+    <link rel="import" href="rmpt/rmpt-campo.html">
+    <link rel="import" href="rmpt/rmpt-indica-campos-obligatorios.html">
+  </head>
+  <body>
+    <template>
+      <rmpt-panel-maestro id="maestro"></rmpt-panel-maestro>
+      <div id="detalle" data-interruptor="muestraDetalle">
+        <rmpt-herramientas-detalle data-confirmacion="Confirma la eliminación de este teatro.">
+        </rmpt-herramientas-detalle>
+        <p id="nombre" is="rmpt-campo" data-label="Nombre" data-accesskey="N">
+          <input type="text">
+        </p>
+        <rmpt-indica-campos-obligatorios></rmpt-indica-campos-obligatorios>
+      </div>
+    </template>
+    <script>
+      "use strict";
+      (function () {
+        var prototipo = Object.create(HTMLFormElement.prototype);
+        var template = elementPrevio();
+        prototipo.createdCallback = function () {
+          this.action = "javascript:;";
+          cargaTemplate(this, template);
+          new MedWeb(this, "ctrlTeatros").inicia();
+        };
+        registraElement("form-teatros",
+            {extends: "form", prototype: prototipo});
+      })();
+    </script>
+  </body>
+</html>

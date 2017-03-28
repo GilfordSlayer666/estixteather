@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Horarios</title>
+        <meta charset="UTF-8">
+        <link rel="import" href="rmpt/rmpt-panel-maestro.html">
+        <link rel="import" href="rmpt/rmpt-herramientas-detalle.html">
+        <link rel="import" href="rmpt/rmpt-campo.html">
+        <link rel="import" href="rmpt/rmpt-selecciona-uno.html">
+        <link rel="import" href="rmpt/rmpt-selecciona-imagen.html">
+        <link rel="import" href="rmpt/rmpt-indica-campos-obligatorios.html">
+    </head>
+    <body>
+   <template>
+      <rmpt-panel-maestro id="maestro"></rmpt-panel-maestro>
+      
+      <div id="detalle" data-interruptor="muestraDetalle">
+        
+        <rmpt-herramientas-detalle data-confirmacion="Confirma eliminar este producto.">
+        </rmpt-herramientas-detalle>
+          
+          
+        <div class="columnas">
+             
+          <div>
+              <p id="horarioI" is="rmpt-campo"
+                data-label="Horario Inicio" data-accesskey="H">
+               <input type="time" placeholder="hh:mm">
+             </p>
+             
+             
+              <p id="horarioT" is="rmpt-campo"
+                data-label="Horario Termino" data-accesskey="T">
+               <input type="time" placeholder="hh:mm">
+             </p>
+            
+
+             <p id="dia" is="rmpt-campo"
+               data-label="Dia" data-accesskey="D">
+               <input type="date" placeholder="aaaa-mm-dd">
+             </p>
+             
+             <p id="costo" is="rmpt-campo"
+               data-label="Costo" data-accesskey="C"
+               data-ayuda="(MN) 6 dígitos enteros y 2 decimales">
+              <input type="number" step="0.01">
+            </p>
+
+            <rmpt-indica-campos-obligatorios></rmpt-indica-campos-obligatorios>
+          
+          </div>
+        </div>
+          
+      </div>
+    </template>
+    <script>
+         "use strict";
+      (function () {
+        var prototipo = Object.create(HTMLFormElement.prototype);
+        var template = elementPrevio();
+        prototipo.createdCallback = function () {
+          this.action = "javascript:;";
+          cargaTemplate(this, template);
+          new MedWeb(this, "ctrlHorarios").inicia();
+        };
+        registraElement("form-horarios",
+            {extends: "form", prototype: prototipo});
+      })();
+    </script>
+    </body>
+</html>

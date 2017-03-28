@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Vista Maestra.</title>
+    <link rel="import" href="rmpt-herramientas-registro.html">
+    
+  </head>
+  <body>
+    <template>
+      <input type="hidden" name="nuevo">
+        <input type="hidden" name="muestraDetalle">
+      <input type="hidden" name="detalleId">
+      <rmpt-herramientas-registro></rmpt-herramientas-registro>      
+    </template>
+    <script>
+      "use strict";
+      (function () {
+        var template = elementPrevio();
+        var prototipo = Object.create(HTMLElement.prototype);
+        prototipo.createdCallback = function () {
+          cargaTemplate(this, template);
+          this.dataset.interruptorInvertido = "muestraDetalle";
+        };
+        registraElement("rmpt-registro", {prototype: prototipo});
+      })();
+    </script>
+  </body>
+</html>

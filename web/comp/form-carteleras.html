@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Carteleras</title>
+        <link rel="import" href="rmpt/rmpt-panel-maestro.html">
+        <link rel="import" href="rmpt/rmpt-herramientas-detalle.html">
+        <link rel="import" href="rmpt/rmpt-campo.html">
+        <link rel="import" href="rmpt/rmpt-selecciona-uno.html">
+        <link rel="import" href="rmpt/rmpt-selecciona-imagen.html">
+        <link rel="import" href="rmpt/rmpt-indica-campos-obligatorios.html">
+    </head>
+    <body>
+    <template>
+      <rmpt-panel-maestro id="maestro"></rmpt-panel-maestro>
+      
+      <div id="detalle" data-interruptor="muestraDetalle">
+        
+        <rmpt-herramientas-detalle data-confirmacion="Confirma eliminar esta cartelera.">
+        </rmpt-herramientas-detalle>
+          
+        <div class="columnas">
+         <div class="imagen crece">
+            <img id="img" alt="Falta seleccionar imagen"/>
+          </div>        
+          <div>
+            <p id="imagen" is="rmpt-selecciona-imagen"
+               data-label="Imagen" data-accesskey="I"
+                data-selector="Seleccionar..." data-img="img">
+            </p>
+            
+            <p id="teatro" is="rmpt-selecciona-uno"
+                data-label="Teatro" data-accesskey="T">
+            </p>
+            
+            <p id="obra" is="rmpt-selecciona-uno"
+                data-label="Obra" data-accesskey="O">
+            </p>
+              
+            <p id="fechaI" is="rmpt-campo"
+               data-label="Fecha de Inicio" data-accesskey="F">
+              <input type="date" placeholder="aaaa-mm-dd">
+            </p>
+            
+            <p id="fechaT" is="rmpt-campo"
+               data-label="Fecha de Termino" data-accesskey="E">
+               <input type="date" placeholder="aaaa-mm-dd">
+             </p>
+            
+             <p id="horarioI" is="rmpt-campo"
+                data-label="Horario Inicio" data-accesskey="H">
+               <input type="time" placeholder="hh:mm">
+             </p>
+             
+             
+              <p id="horarioT" is="rmpt-campo"
+                data-label="Horario Termino" data-accesskey="R">
+               <input type="time" placeholder="hh:mm">
+             </p>
+            
+             <p id="costo" is="rmpt-campo"
+               data-label="Costo" data-accesskey="C"
+               data-ayuda="(MN) 6 dígitos enteros y 2 decimales">
+              <input type="number" step="0.01">
+            </p>
+            
+     
+            
+            <rmpt-indica-campos-obligatorios></rmpt-indica-campos-obligatorios>
+          </div>
+            
+            
+        </div>
+          
+      </div>
+    </template>
+        
+    <script>
+      "use strict";
+      (function () {
+        var prototipo = Object.create(HTMLFormElement.prototype);
+        var template = elementPrevio();
+        prototipo.createdCallback = function () {
+          this.action = "javascript:;";
+          this.method = "POST";
+          this.enctype="multipart/form-data";
+          cargaTemplate(this, template);
+          new MedWeb(this, "ctrlCarteleras").inicia();
+        };
+        registraElement("form-carteleras",
+            {extends: "form", prototype: prototipo});
+      })();
+    </script>
+</html>

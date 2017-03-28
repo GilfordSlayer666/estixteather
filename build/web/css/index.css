@@ -1,0 +1,319 @@
+/*
+Copyright 2017 Gilford.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+/* 
+    Created on : 12/03/2017, 03:25:21 PM
+    Author     : Gilford
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#titulo{   
+    display: none;
+}
+h1{
+     color: #000;
+    text-align: center;
+}
+
+
+a{
+    color: #b0755f;
+}
+
+body{
+    background: #651923;
+ /*   font-family: 'Nunito Sans' sans-serif;*/
+    padding-top: 95px;
+}
+
+
+.imagen {
+    text-align: center;
+}
+.imagen img {max-width: 100%}
+
+.icono{
+    margin: 20px;
+}
+
+/******************ESTILOS DEL INDEX / COMPRO-INICIO*******************/
+
+.bienvenida{
+    width: 60%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.columnas{
+    width: 95%;
+/*    background: #B4AEAE;*/
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.div-inicio{
+/*    background:  #dbcdcf;*/
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    
+     
+}
+.div-inicio1{
+/*    background:  #dbcdcf;*/
+    width: 320px;
+}
+
+
+
+
+
+
+
+/*************ESTILOS DEL MENU********************/
+
+header{
+    background: #1c0b0e;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+
+.menu{
+    width: 90%;
+    max-width: 1500px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu .logo{
+    display: inline-block;
+    margin-right: 1em;
+    
+}
+
+.menu .logo img{
+    vertical-align: top;
+    height: 40px;
+}
+
+.menu .btn-menu{
+    display: none;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+/*.menu .logo:hover{
+    background: #000080;
+}*/
+
+.menu .enlaces{
+    display: inline-block;
+    text-align: right;
+}
+
+.menu .enlaces a{
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1em;
+    font-size: 1em;
+}
+
+.menu .enlaces a:hover{
+    background: #f2f2f2;
+    color: #000080;
+}
+
+main{
+   width: 90%;
+   max-width: 1500px;
+   margin: 20px auto;
+   background:  #ffffff;
+   padding: 20px;
+   box-shadow: 0px 2px 5px rgba(0,0,0,0.75);
+}
+
+/*Efectos del menu*/
+
+.headroom{
+    transition: transform .3s ease;
+}
+
+.headroom--pinned{
+    transform: translateY(0%);
+}
+
+.headroom--unpinned{
+    transform: translateY(-100%);
+}
+
+#formUsuarioId{
+    color: #FFF;
+}
+
+/*MEDIAQUERIES*/
+
+@media screen and (max-width: 839px){
+    
+    header .menu{
+        flex-direction: column;
+        
+    }
+    header .menu .logo{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.5em;
+    }
+    header .menu .logo .btn-menu {
+        display: inline-block;
+    }
+    header .menu .enlaces{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;        
+    }
+    
+    header .menu .btn-sesion{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0.3em;
+    }
+    header .menu .logo .cerrar {
+        display: inline-block;
+    }
+    
+    
+}
+
+/****************ESTILOS BOTONES***************/
+
+
+/*diseño de los botones*/
+.buscar, .cancelar, .eliminar, .sesion, .cerrar, .principal{
+    display: inline-block;
+    border: none;
+    color: #f2f2f2;
+    padding: 9px;
+    font-size: 11px;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+}
+
+/*color del Boton de buscar*/
+.buscar{background: #000;}
+
+/*color del Boton de cancelar*/
+.cancelar{ background: #FFA726;}
+
+/*color del Boton de eliminar*/
+.eliminar{background: #BF0000;}
+
+/*color del Boton de iniciar y terminar sesion*/
+.sesion, .cerrar {background: #c45907;}
+
+/*color del Boton de agregar , guardar*/
+.principal {background: #26A69A;}
+
+.selector, select{
+    display: inline-block;
+    border: none;
+    background: #120A8F;
+    color: #f2f2f2;
+    padding: 9px;
+    font-size: 11px;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+}
+
+
+input[type="file"] {
+  position: absolute;
+  top: -300em
+}
+/*.selector:active, select:active, input[type="button"]:active,
+input[type="submit"]:active {
+  background-color: #7BBEE1
+}*/
+
+.selector:hover, select:hover, input[type="button"]:hover,
+input[type="submit"]:active  {
+  background: rgba(0,0,0,0);
+ color: #f2f2f2;
+ box-shadow: inset 0 0 0 3px #c45907;
+}
+
+/*input[type="button"].principal, input[type="submit"].principal {
+  background-color: #4682B4;
+}*/
+
+
+.campo > label > .valor, .campo > .ayuda, .campo > .error {
+  display: block
+}
+.campo > label > .texto, .campo > label > .obligatorio {
+  display: inline;
+  color: #ff6d00
+}
+.ayuda {font-size: 0.8em}
+.error {color: red}
+.columnas {
+  display: flex;
+  flex-wrap: wrap
+}
+.columnas > * {margin: 1em}
+.columnas > .crece {flex: 1}
+
+
+
+@media screen and (max-width: 479px) {
+  .columnas {flex-direction: column}
+}
+
+/*.herramientas {
+  margin: 0.5em 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center
+}*/
+
+
+/*Input Text*/
+
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Forma de Manejo de Sesión</title>
+        <meta charset="UTF-8">
+        <link rel="import" href="compro-inicio.html">
+        <link rel="import" href="form-iniciar-sesion.html">
+        <link rel="import" href="form-teatros.html">
+        <link rel="import" href="form-usuarios.html">
+        <link rel="import" href="form-obras.html">
+        <link rel="import" href="form-horarios.html">
+        <link rel="import" href="form-carteleras.html">
+
+        <link rel="import" href="form-carteleras-cliente.html">
+        <link rel="import" href="form-avisos.html">
+        
+        
+              
+        <!--    <style>
+              [is="form-sesion"] li {
+                display: block;
+                margin: 1em
+              }
+            </style>-->
+    </head>
+    <body>
+        <template>
+            
+            <header id="header">
+                
+                <nav class="menu">
+                    <input type="hidden" name="sesionIniciada">
+                    <input type="hidden" name="rolAdministrador">
+                    <input type="hidden" name="rolCliente">
+                    
+                    <div class="btn-sesion">
+                        <div id="formUsuarioId"></div>
+                        <input type="button" class="sesion" value="Iniciar Sesión" accesskey="S"
+                               onclick="location.hash = '#form-iniciar-sesion';"
+                               data-interruptor-invertido="sesionIniciada">
+                        <input type="button" class="cerrar" value="Terminar Sesión" accesskey="T"
+                               data-accion="terminarSesion" data-interruptor="sesionIniciada">
+                    </div>
+                    <div class="logo">
+                        <a><img src="../img/logo1.png"/></a>
+                        <a class="btn-menu" id="btn-menu"><i class="icono fa fa-bars" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="enlaces" id="enlaces">
+                        <a href="#compro-inicio">Inicio</a>
+
+                        <a data-interruptor="rolAdministrador" href="#form-teatros">
+                            Teatros
+                        </a>
+
+                        <a data-interruptor="rolAdministrador" href="#form-usuarios">
+                            Usuarios
+                        </a>
+
+                        <a data-interruptor="rolAdministrador" href="#form-obras">
+                            Obras
+                        </a>
+
+                        <a data-interruptor="rolAdministrador" href="#form-carteleras">
+                            Carteleras
+                        </a>
+
+                        <a data-interruptor="rolAdministrador" href="#form-horarios">
+                            Horarios
+                        </a>
+
+<!--                    <a data-interruptor="rolCliente" href="#form-productos-cliente">
+                            Catálogo de Productos
+                        </a>
+
+                        <a data-interruptor="rolCliente" href="#form-carrito">
+                            Carrito de Compras
+                        </a>-->
+                        <a data-interruptor="rolCliente" href="#form-carteleras-cliente">
+                            Catálogo de Carteleras
+                        </a>
+
+                        <a href="#form-avisos">Avisos</a>
+
+                    </div>
+                </nav>
+            </header>    
+        </template>
+        <script>
+            "use strict";
+            (function () {
+                var prototipo = Object.create(HTMLFormElement.prototype);
+                var template = elementPrevio();
+                prototipo.createdCallback = function () {
+                    this.action = "javascript:;";
+                    cargaTemplate(this, template);
+                    var medWeb = new MedWeb(this, "ctrlSesion");
+                    medWeb.formActualizada = function (modeloForm) {
+                        if (modeloForm.siguienteForm) {
+                            location.reload();
+                        }
+                    };
+                    medWeb.inicia();
+                };
+                registraElement("form-sesion",
+                        {extends: "form", prototype: prototipo});
+            })();
+        </script>
+        <script src="../js/headroom.min.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/menu.js"></script>
+    </body>
+</html>

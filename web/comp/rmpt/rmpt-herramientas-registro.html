@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Barra de Herramientas para las Vistas Maestras.</title>    
+  </head>
+  <body>
+    <template>
+      <input type="button" value="Agregar" accesskey="A" class="principal"
+             data-accion="action_agregar">          
+    </template>
+    <script>
+      "use strict";
+      (function () {
+        var template = elementPrevio();
+        var prototipo = Object.create(HTMLElement.prototype);
+        prototipo.createdCallback = function () {
+          this.classList.add("herramientas");
+          cargaTemplate(this, template);
+        };
+        registraElement("rmpt-herramientas-registro", {prototype: prototipo});
+      })();
+    </script>
+  </body>
+</html>

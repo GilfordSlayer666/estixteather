@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Página de inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <template>
+            <p class="imagen">
+                <img alt="Teatro" src="../img/imagen_inicio.png">
+            </p>
+            <br/><br/><br/>
+            <div class="bienvenida">
+                <h1>Bienvenido</h1><br/>
+                <h4>En esta página podrás encontrar información sobre las obras de teatros con la categoría de 
+                    Comedia, entre las cosas que podrás consultar es una breve reseña, el precio de boleto, la 
+                    hora de inicio, entre otras cosas.</h4>
+            </div>
+            <br/><br/><br/><br/><br/>
+            <h2>Servicios</h2>
+           
+            <div class="columnas">
+
+                <div class="div-inicio">
+                    <p class="icono">
+                        <img alt="smartphone" src="img/smartphone.png">
+                    </p> 
+                    
+                    <p>
+                        Aplicación Móvil  <br/><br/>podrás descargar nuestra aplicación para dispositivos móviles 
+                        con el sistema operativo Android, en donde podrás tener un acceso más fácil a toda la 
+                        información contenida en la pagina.
+                    </p>
+                </div>
+                <!--                <div>Consultar Carteleras</div>-->
+                
+                <div class="div-inicio">
+                    <p class="icono">
+                        <img alt="smartphone" src="../img/page1_img12.png">
+                    </p> 
+                 
+                    <p>
+                        Consulta de las Obras <br/><br/> Podrás consultar las mejor obras teatrales que se 
+                        presentaran en la Ciudad de México, podrás leer una sinopsis sobre dicha obra.
+                    </p>
+                </div>
+            </div>
+     
+            <!--            <br/><br/><br/><br/>-->
+            <h2>Obras</h2>
+            <div class="columnas">
+
+                <div class="div-inicio1">
+                    <p class="imagen">
+                        <img alt="imagen-obra" src="img/¿¡¿Por-qué-no-nos-casamos.jpg">
+                    </p> 
+                    <h3>¿¡¿Por qué no nos casamos</h3><br/>
+                    <p>Adrián Cué y Ana Pamela, participan en esta pieza teatral que con una pregunta que quizá 
+                        nos lleve a descubrir lo DULCE, SALADO, y a veces completamente IRÓNICO de una relación. . .</p>
+                </div>
+                <div class="div-inicio1">
+                    <p class="imagen">
+                        <img alt="imagen-obra" src="img/Made-Febrero-250.jpg">
+                    </p> 
+                    <h3>Made in México</h3><br/>
+                    <p>Un encuentro de dos parejas, dos hermanos, y cuatro amigos que vuelven a verse después de 30 
+                        años enfrentando sus más profundos sentimientos y en donde se dan cuenta que sus vidas han 
+                        tomado diferentes caminos.</p>
+                </div>
+                <div class="div-inicio1">
+                    <p class="imagen">
+                        <img alt="imagen-obra" src="img/Q0Ga8-yz.jpg">
+                    </p> 
+                    <h3>Mamá por siempre</h3><br/>
+                    <p>
+                        Esta pequeña gran obra nos habla del infinito placer de comprobar que la realidad y la verdad 
+                        no son una misma cosa y que se puede volver a dialogar, emocionar y reír con quien se supone 
+                        dejó de ser realidad, porque, la verdad, puede traerle cuantas veces quiera. 
+                    </p>
+                </div>
+            </div>
+
+        </template>
+        <script>
+            "use strict";
+            (function () {
+                var template = elementPrevio();
+                var prototipo = Object.create(HTMLElement.prototype);
+                prototipo.createdCallback = function () {
+                    this.style.display = "block";
+                    cargaTemplate(this, template);
+                };
+                registraElement("compro-inicio", {prototype: prototipo});
+            })();
+        </script>
+    </body>
+</html>
